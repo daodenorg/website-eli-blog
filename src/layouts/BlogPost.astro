@@ -8,48 +8,96 @@ import FormattedDate from '../components/FormattedDate.astro';
 type Props = CollectionEntry<'blog'>['data'];
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const basePath = import.meta.env.BASE_URL;
+
+// Ensure heroImage has the correct base path if it starts with '/'
+const imageWithBasePath = heroImage && heroImage.startsWith('/') 
+  ? `${basePath}${heroImage.slice(1)}` 
+  : heroImage;
 ---
 
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description} />
 		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
 			.hero-image {
 				width: 100%;
+				max-height: 450px;
+				margin-bottom: 2rem;
+				overflow: hidden;
+				border-radius: 8px;
 			}
 			.hero-image img {
 				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				border-radius: 8px;
 				box-shadow: var(--box-shadow);
 			}
+			.container {
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 0 1rem;
+			}
 			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
+				background: white;
+				border-radius: 8px;
+				padding: 2rem;
+				box-shadow: var(--box-shadow);
+				margin-bottom: 3rem;
 			}
 			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
+				margin-bottom: 2rem;
 				text-align: center;
-				line-height: 1;
+				line-height: 1.2;
 			}
 			.title h1 {
-				margin: 0 0 0.5em 0;
+				margin: 0 0 0.5rem 0;
+				font-size: 2rem;
+				font-weight: 700;
+				color: var(--primary);
 			}
 			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
+				margin-bottom: 1rem;
+				color: var(--text-light);
+				font-size: 0.9rem;
+				text-align: center;
 			}
 			.last-updated-on {
 				font-style: italic;
+				margin-top: 0.5rem;
+			}
+			.divider {
+				width: 80px;
+				height: 4px;
+				background-color: var(--primary-light);
+				margin: 1.5rem auto;
+				border-radius: 2px;
+			}
+			.blog-content {
+				font-size: 1.1rem;
+				line-height: 1.7;
+				color: var(--text);
+			}
+			.blog-content p:first-of-type::first-letter {
+				float: left;
+				font-size: 3.5rem;
+				line-height: 1;
+				font-weight: 700;
+				margin-right: 0.75rem;
+				color: var(--primary);
+			}
+			@media (max-width: 768px) {
+				.prose {
+					padding: 1.5rem;
+				}
+				.title h1 {
+					font-size: 1.5rem;
+				}
+				.blog-content {
+					font-size: 1rem;
+				}
 			}
 		</style>
 	</head>
@@ -57,28 +105,30 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 	<body>
 		<Header />
 		<main>
-			<article>
-				<div class="hero-image">
-					{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
-				</div>
-				<div class="prose">
+			<div class="container">
+				{imageWithBasePath && (
+					<div class="hero-image">
+						<img src={imageWithBasePath} alt="" />
+					</div>
+				)}
+				<article class="prose">
 					<div class="title">
 						<div class="date">
 							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
+							{updatedDate && (
+								<div class="last-updated-on">
+									Last updated on <FormattedDate date={updatedDate} />
+								</div>
+							)}
 						</div>
 						<h1>{title}</h1>
-						<hr />
+						<div class="divider"></div>
 					</div>
-					<slot />
-				</div>
-			</article>
+					<div class="blog-content">
+						<slot />
+					</div>
+				</article>
+			</div>
 		</main>
 		<Footer />
 	</body>

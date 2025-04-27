@@ -3,6 +3,9 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+// Get the base path from import.meta.env
+const basePath = import.meta.env.BASE_URL;
 ---
 
 <!doctype html>
@@ -13,37 +16,294 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	<body>
 		<Header />
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<section class="hero">
+				<div class="hero-content">
+					<h1>Welcome to Eli's Christian Blog</h1>
+					<p>
+						"For I know the plans I have for you," declares the LORD, "plans to prosper you and not to harm you, plans to give you hope and a future."
+					</p>
+					<p class="verse">— Jeremiah 29:11</p>
+					<div class="cta-buttons">
+						<a href={`${basePath}blog`} class="cta-primary">Read the Blog</a>
+						<a href={`${basePath}devotionals`} class="cta-secondary">Daily Devotionals</a>
+					</div>
+				</div>
+			</section>
+
+			<section class="features">
+				<div class="feature">
+					<div class="feature-icon">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
+					</div>
+					<h2>Daily Scripture</h2>
+					<p>Start your day with God's Word. Our daily scripture readings provide inspiration and guidance for your spiritual journey.</p>
+					<a href="#" class="read-more">Read More →</a>
+				</div>
+
+				<div class="feature">
+					<div class="feature-icon">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 3"></path></svg>
+					</div>
+					<h2>Prayer Corner</h2>
+					<p>Share your prayer requests and join others in prayer. Together, we can lift each other up and support one another in faith.</p>
+					<a href="#" class="read-more">Read More →</a>
+				</div>
+
+				<div class="feature">
+					<div class="feature-icon">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+					</div>
+					<h2>Community Outreach</h2>
+					<p>Discover ways to serve and make a difference in your community. Faith in action is a powerful witness to God's love.</p>
+					<a href="#" class="read-more">Read More →</a>
+				</div>
+			</section>
+
+			<section class="recent-posts">
+				<h2>Recent Blog Posts</h2>
+				<div class="post-grid">
+					<a href="#" class="post-card">
+						<div class="post-image" style="background-image: url('/blog-placeholder-1.jpg');"></div>
+						<div class="post-content">
+							<h3>Walking in Faith During Difficult Times</h3>
+							<p class="post-excerpt">How to maintain your faith and trust in God when facing life's challenges and uncertainties.</p>
+							<span class="post-date">April 15, 2024</span>
+						</div>
+					</a>
+					<a href="#" class="post-card">
+						<div class="post-image" style="background-image: url('/blog-placeholder-2.jpg');"></div>
+						<div class="post-content">
+							<h3>The Power of Prayer in Daily Life</h3>
+							<p class="post-excerpt">Incorporating meaningful prayer into your everyday routine for spiritual growth and connection.</p>
+							<span class="post-date">April 10, 2024</span>
+						</div>
+					</a>
+					<a href="#" class="post-card">
+						<div class="post-image" style="background-image: url('/blog-placeholder-3.jpg');"></div>
+						<div class="post-content">
+							<h3>Understanding God's Grace</h3>
+							<p class="post-excerpt">Exploring the boundless nature of God's grace and how it transforms our lives and relationships.</p>
+							<span class="post-date">April 5, 2024</span>
+						</div>
+					</a>
+				</div>
+				<div class="view-all">
+					<a href={`${basePath}blog`} class="view-all-link">View All Posts →</a>
+				</div>
+			</section>
 		</main>
 		<Footer />
 	</body>
 </html>
+
+<style>
+	body {
+		font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		margin: 0;
+		padding: 0;
+		color: #4f6d7a;
+		background: #fbfbfd;
+	}
+	main {
+		width: 100%;
+	}
+	.hero {
+		background-color: #eff6ff;
+		padding: 5rem 1rem;
+		text-align: center;
+		position: relative;
+	}
+	.hero-content {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	.hero h1 {
+		font-size: 2.5rem;
+		color: #3d5a80;
+		margin-bottom: 1.5rem;
+		line-height: 1.2;
+		font-weight: 700;
+	}
+	.hero p {
+		font-size: 1.2rem;
+		line-height: 1.6;
+		margin-bottom: 0.5rem;
+		color: #4f6d7a;
+	}
+	.verse {
+		font-style: italic;
+		margin-bottom: 2rem;
+		color: #6b7c85;
+	}
+	.cta-buttons {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		margin-top: 2rem;
+	}
+	.cta-primary, .cta-secondary {
+		padding: 0.8rem 1.5rem;
+		border-radius: 6px;
+		font-weight: 600;
+		text-decoration: none;
+		transition: all 0.2s ease;
+	}
+	.cta-primary {
+		background-color: #3d5a80;
+		color: white;
+	}
+	.cta-primary:hover {
+		background-color: #2c4566;
+	}
+	.cta-secondary {
+		background-color: white;
+		color: #3d5a80;
+		border: 1px solid #3d5a80;
+	}
+	.cta-secondary:hover {
+		background-color: #f8fafc;
+	}
+	.features {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+		padding: 4rem 1rem;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+	.feature {
+		background: white;
+		border-radius: 8px;
+		padding: 2rem;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+		text-align: center;
+		transition: transform 0.2s ease;
+	}
+	.feature:hover {
+		transform: translateY(-5px);
+	}
+	.feature-icon {
+		background-color: #eff6ff;
+		color: #3d5a80;
+		width: 60px;
+		height: 60px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0 auto 1.5rem;
+	}
+	.feature h2 {
+		color: #3d5a80;
+		font-size: 1.25rem;
+		margin-bottom: 1rem;
+	}
+	.feature p {
+		color: #4f6d7a;
+		line-height: 1.6;
+		margin-bottom: 1.5rem;
+	}
+	.read-more {
+		color: #3d5a80;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 0.95rem;
+	}
+	.read-more:hover {
+		text-decoration: underline;
+	}
+	.recent-posts {
+		background-color: #f8fafc;
+		padding: 4rem 1rem;
+	}
+	.recent-posts h2 {
+		text-align: center;
+		color: #3d5a80;
+		font-size: 1.75rem;
+		margin-bottom: 2.5rem;
+	}
+	.post-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+	.post-card {
+		background: white;
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+		text-decoration: none;
+		color: inherit;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		transition: transform 0.2s ease;
+	}
+	.post-card:hover {
+		transform: translateY(-5px);
+	}
+	.post-image {
+		height: 180px;
+		background-size: cover;
+		background-position: center;
+	}
+	.post-content {
+		padding: 1.5rem;
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+	}
+	.post-content h3 {
+		color: #3d5a80;
+		font-size: 1.1rem;
+		margin: 0 0 1rem 0;
+		line-height: 1.4;
+	}
+	.post-excerpt {
+		font-size: 0.95rem;
+		line-height: 1.5;
+		color: #4f6d7a;
+		margin-bottom: 1.5rem;
+		flex-grow: 1;
+	}
+	.post-date {
+		font-size: 0.85rem;
+		color: #6b7c85;
+	}
+	.view-all {
+		text-align: center;
+		margin-top: 3rem;
+	}
+	.view-all-link {
+		color: #3d5a80;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 1rem;
+		padding: 0.8rem 1.5rem;
+		border: 1px solid #3d5a80;
+		border-radius: 6px;
+		transition: all 0.2s ease;
+	}
+	.view-all-link:hover {
+		background-color: #3d5a80;
+		color: white;
+	}
+	@media (max-width: 768px) {
+		.hero h1 {
+			font-size: 2rem;
+		}
+		.cta-buttons {
+			flex-direction: column;
+			gap: 0.5rem;
+		}
+		.features {
+			gap: 1.5rem;
+			padding: 3rem 1rem;
+		}
+		.post-grid {
+			gap: 1.5rem;
+		}
+	}
+</style>
