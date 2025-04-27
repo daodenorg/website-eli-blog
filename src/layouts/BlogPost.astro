@@ -12,7 +12,7 @@ const basePath = import.meta.env.BASE_URL;
 
 // Ensure heroImage has the correct base path if it starts with '/'
 const imageWithBasePath = heroImage && heroImage.startsWith('/') 
-  ? `${basePath}${heroImage.slice(1)}` 
+  ? `${basePath}${heroImage.slice(1)}`  // Path already starts with /, so we remove the slash from heroImage
   : heroImage;
 ---
 

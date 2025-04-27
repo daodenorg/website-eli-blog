@@ -3,7 +3,7 @@ import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
 
 // Get the base path from import.meta.env
-const basePath = import.meta.env.BASE_URL + '/';
+const basePath = import.meta.env.BASE_URL;
 ---
 
 <header>
@@ -11,8 +11,8 @@ const basePath = import.meta.env.BASE_URL + '/';
 		<h2><a href={basePath}>{SITE_TITLE}</a></h2>
 		<div class="internal-links">
 			<HeaderLink href={basePath}>Home</HeaderLink>
-			<HeaderLink href={`${basePath}blog`}>Blog</HeaderLink>
-			<HeaderLink href={`${basePath}about`}>About</HeaderLink>
+			<HeaderLink href={`${basePath}/blog`}>Blog</HeaderLink>
+			<HeaderLink href={`${basePath}/about`}>About</HeaderLink>
 		</div>
 		<div class="social-links">
 			<a href="#" title="Share your faith" target="_blank">
