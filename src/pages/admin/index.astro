@@ -1,0 +1,28 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eli's Blog Admin</title>
+    <link rel="stylesheet" href="https://unpkg.com/@staticcms/app@^3.0.0/dist/main.css" />
+    <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Static CMS will render inside this div -->
+    <div id="nc-root"></div>
+
+    <script src="https://unpkg.com/@staticcms/app@^3.0.0/dist/static-cms-app.js"></script>
+    <script>
+      window.CMS.init();
+    </script>
+  </body>
+</html> 

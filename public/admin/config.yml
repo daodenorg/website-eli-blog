@@ -1,0 +1,34 @@
+backend:
+  name: git-gateway
+  branch: main
+  local_backend: true
+
+local_backend: true
+
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: blog
+    label: Blog Posts
+    folder: src/content/blog
+    create: true
+    format: frontmatter
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: "Publish Date", name: pubDate, widget: datetime }
+      - { label: Description, name: description, widget: string }
+      - { label: "Hero Image", name: heroImage, widget: image, required: false }
+      - { label: Body, name: body, widget: markdown }
+      - { label: Tags, name: tags, widget: list, required: false }
+  
+  - name: pages
+    label: Pages
+    files:
+      - label: About Page
+        name: about
+        file: src/content/about.md
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Body, name: body, widget: markdown } 
